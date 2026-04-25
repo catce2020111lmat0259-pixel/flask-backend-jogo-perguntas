@@ -1,2 +1,16 @@
-# flask-backend-jogo-perguntas
-Aplicação Flask de perguntas e respostas. Permite cadastrar questões com alternativas, jogar em modo quiz com pontuação de acertos e erros, e exibir/gerenciar todas as perguntas. Interface simples com Bootstrap e persistência temporária em lista.
+# Flask Quiz Game
+
+Projeto em Flask que implementa um jogo de perguntas e respostas.
+
+## Funcionalidades
+- Cadastro de novas questões
+- Exibição e gerenciamento de questões
+- Jogo interativo com pontuação de acertos e erros
+- Interface estilizada com com CSS próprio
+
+## Como executar
+
+### Sem ambiente virtual
+```bash
+pip install Flask
+flask --app main run --debug

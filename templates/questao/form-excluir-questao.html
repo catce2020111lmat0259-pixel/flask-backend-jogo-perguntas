@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Questão</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questao/styles.css') }}">
+</head>
+<body>
+    <div class="container-questao">
+        <header>
+            <h1 class="titulo-geral">Excluir Questão</h1>
+            <div class="aviso-exclusao">&#128680; Esta ação não pode ser desfeita. Confira a questão antes de continuar.</div>
+        </header>
+        <main>
+            <section class="card-exclusao">
+                
+
+                <div class="form-titulo">Você deseja excluir esta questão</div>
+                <p><strong>Pergunta:</strong> {{ context.questao.data['pergunta'] }}</p>
+                <ul>
+                    <li>A. {{ context.questao.data['respostas'][0] }}</li>
+                    <li>B. {{ context.questao.data['respostas'][1] }}</li>
+                    <li>C. {{ context.questao.data['respostas'][2] }}</li>
+                </ul>
+                <p><strong>Resposta Correta:</strong> {{ context.questao.data['respostaCorreta'] }}</p>
+            </section>
+            
+            <section class="card-confirmacao">
+                <form action="/excluir/confirmar/{{ context.questao.id }}" method="POST">
+                    <div class="confirmacao-texto">
+                        <label for="confirmar_exclusao">Confirmar Exclusão?</label>
+                    </div>
+                    <div class="botoes-exclusao">
+                        <input class="btn-exclusao" type="submit" id="confirmar_exclusao" name="confirmar-exclusao" value="Sim">
+                        <input class="btn-cancelar" type="submit" id="confirmar_exclusao" name="confirmar-exclusao" value="Não">
+                    </div>
+                    
+                </form>
+            </section>
+            
+            <section class="card-voltar">
+                <p>Voltar para a <a href="/listar">lista de questões</a></p>
+                <p>Voltar para a <a href="/questao">home</a></p>
+            </section>
+            
+        </main>
+    </div>
+</body>
+</html>

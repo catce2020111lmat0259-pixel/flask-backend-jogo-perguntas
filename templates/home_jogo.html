@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Jogo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo/styles.css') }}">
+</head>
+<body>
+    <div class="container-home">
+        <header>
+            <img class="logo-jogo" src="{{ url_for('static', filename='imagens/jogo/jogo-de-perguntas.png') }}" alt="jogo-de-perguntas">
+        </header>
+        <main>
+            <section class="card-home">
+                <h1>Você tem o que é preciso para acertar todas as perguntas e chegar até o final?</h1>
+                <form action="/jogo/partida">
+                    <input class="btn-comecar" type="submit" value="Começar">
+                </form>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>

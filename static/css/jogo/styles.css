@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'LuckiestGuy';
+    src: url('../fonts/LuckiestGuy-Regular.ttf') format('truetype');
+}
+@media (max-width: 768px) {
+    .container-jogo main {
+        flex-direction: column;
+    }
+}
+
+body {
+    font-family: 'Luckiest Guy', cursive;
+
+    padding: 1rem;
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button,
+input {
+    font-family: inherit;
+}
+
+.container-home, .container-fim {
+    width: 90%;
+    max-width: 600px;
+    aspect-ratio: 1 / 1; /* quadrado */
+    
+    background-color: #86c8ffb2;
+    padding: 2rem;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #0000003a;
+}
+
+.container-jogo {
+    width: 100%;
+    max-width: 900px;
+
+    height: 600px;
+
+    margin: 2rem auto;
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: 10px;
+}
+.container-jogo main {flex: 1; display: flex; gap: 2rem; align-items: stretch;}
+
+main {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-home h1 {color: #e5ff00; text-shadow: -4px -4px 0 #000, -2px -4px 0 #000,  0px -4px 0 #000,  2px -4px 0 #000,  4px -4px 0 #000, -4px  0px 0 #000, -2px  0px 0 #000,  2px  0px 0 #000,  4px  0px 0 #000, -4px  4px 0 #000, -2px  4px 0 #000,  0px  4px 0 #000,  2px  4px 0 #000,  4px  4px 0 #000; line-height: 1.1; text-align: center;}
+.container-fim h3 {color: #63005e; text-align: center;}
+.btn-comecar {width: 100%; font-size: 25px ; font-weight: bold; color: #000000; padding: 5px 10px; border: 2px solid #000000; border-radius: 7px; cursor: pointer; background: #ffffff; box-shadow: #000000 2px 2px;}
+.btn-comecar:hover {background: #51ff006b;}
+
+.card-home {width: 100%; padding: 0 0 20px 20px;}
+
+.logo-jogo {width: 100%; max-width: 400px;}
+
+.card-pergunta {min-width: 300px;  flex: 2; }
+.card-jogador {min-width: 300px; flex: 1;}
+.card-jogador, .card-pergunta {background: #9bd2ffb2; border: 1px solid #000000; border-radius: 30px; padding: 20px; height: 100%; display: flex; flex-direction: column;}
+
+.painel-titulo {text-align: center; font-weight: 600; padding-bottom: 20px; margin: 0; font-size: 18px;}
+.painel-dados {font-weight: 600; color: #230055; font-size: 17px;}
+
+.error {color: red; font-weight: bold; font-size: 17px; padding-top: 15px;}
+
+.pergunta {border: 1px solid #000000; padding: 10px; margin-bottom: 80px; font-size: 17px;}
+.respostas {border: 1px solid #000000; padding: 10px ; margin-bottom: 5px; font-size: 17px;}
+.btn-responder {width: 50%; padding: 5px; border: 1px solid #000000; border-radius: 6px; background: #ffffff; box-shadow: #000000 2px 2px; cursor: pointer; color: #000000; font-weight: bold; display: block; margin: 50px auto 0; font-size: 17px;}
+.btn-responder:hover {opacity: 0.85; background: #eeeeee;}
+.btn-continuar {width: 70%; padding: 5px; border: 1px solid #000000; border-radius: 6px; background: #e4e4e4; box-shadow: #000000 2px 2px; cursor: pointer; color: #000000; font-weight: bold; display: block; margin: 90px auto 0; font-size: 17px;}
+.btn-finalizar {width: 70%; padding: 5px; border: 1px solid #000000; border-radius: 6px; background: #e4e4e4; box-shadow: #000000 2px 2px; cursor: pointer; color: #000000; font-weight: bold; display: block; margin: 0 auto; font-size: 17px;}
+.btn-continuar:hover, .btn-finalizar:hover {opacity: 0.85; background: #ffffff;}
+.btn-jogar-novamente {width: 70%; padding: 5px; border: 1px solid #000000; border-radius: 6px; background: #ffffff; box-shadow: #000000 2px 2px; cursor: pointer; color: #000000; font-weight: bold; display: block; margin: 50px auto 0; font-size: 17px;}
+.btn-jogar-novamente:hover {opacity: 0.85; background: #ffbeff;}
+
+.respostas.correta-escolhida {background: #71ff89; border-color: #000000;}
+.respostas.errada-escolhida {background: #ff7373; border-color: #000000;}
+.respostas.correta-revelada {background: #f6ff71; border-color: #000000;}
+.resposta-correta {color: #008b2a; font-weight: bold; padding: 10px; margin-top: 10px; font-size: 17px;}

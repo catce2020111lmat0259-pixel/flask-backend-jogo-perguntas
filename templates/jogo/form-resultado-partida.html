@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do partida</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo/styles.css') }}">
+</head>
+<body>
+    <div class="container-jogo">
+        <header>
+        </header>
+        <main>
+            <section class="card-pergunta">
+                <div>
+                    {% if context.questao and context.questao.data %}
+                        <div class="pergunta">{{ context.questao.data['pergunta'] }}</div>
+
+                        <div class="respostas {% if context.resposta_jogador == 'A' and context.resposta_correta == 'A' %}
+                                                    correta-escolhida
+                                                {% elif context.resposta_jogador == 'A' and context.resposta_correta != 'A' %}
+                                                    errada-escolhida
+                                                {% elif context.resposta_jogador != context.resposta_correta and context.resposta_correta == 'A' %}
+                                                    correta-revelada
+                                                {% endif %}">
+                            <label>A: {{ context.questao.data['respostas'][0] }}</label>
+                        </div>
+
+                        <div class="respostas {% if context.resposta_jogador == 'B' and context.resposta_correta == 'B' %}
+                                                    correta-escolhida
+                                                {% elif context.resposta_jogador == 'B' and context.resposta_correta != 'B' %}
+                                                    errada-escolhida
+                                                {% elif context.resposta_jogador != context.resposta_correta and context.resposta_correta == 'B' %}
+                                                    correta-revelada
+                                                {% endif %}">
+                            <label>B: {{ context.questao.data['respostas'][1] }}</label>
+                        </div>
+
+                        <div class="respostas {% if context.resposta_jogador == 'C' and context.resposta_correta == 'C' %}
+                                                    correta-escolhida
+                                                {% elif context.resposta_jogador == 'C' and context.resposta_correta != 'C' %}
+                                                    errada-escolhida
+                                                {% elif context.resposta_jogador != context.resposta_correta and context.resposta_correta == 'C' %}
+                                                    correta-revelada
+                                                {% endif %}">
+                            <label>C: {{ context.questao.data['respostas'][2] }}</label>
+                        </div>
+
+                        {% if not context.correta %}
+                            <div class="resposta-correta">Resposta correta: {{ context.resposta_correta }}</div>
+                        {% endif %}
+
+                        {% else %}
+                            <div class="questao-erro">Erro: questão não encontrada</div>
+                        {% endif %}
+                </div>
+            </section>
+
+            <section class="card-jogador">
+                <div class="painel-titulo">Painel do Jogador</div>
+
+                <div class="painel-dados">
+                    <p>Perguntas respondidas = {{ context.perguntas_respondidas }}</p>
+                    <p>Acertos = {{ context.acertos }}</p>
+                    <p>Erros = {{ context.erros }}</p>
+                </div>
+
+                {% if not context.fim %}
+                    <form action="/jogo/continuar" method="POST">
+                        <input type="hidden" name="partida_id" value="{{ context.partida_id }}">
+                        <input class="btn-continuar" type="submit" value="Continuar partida">
+                    </form>
+                {% else %}
+                    <form class="btn-finalizar" action="/jogo/fim" method="POST">
+                        <input type="hidden" name="partida_id" value="{{ context.partida_id }}">
+                        <input type="submit" value="Finalizar">
+                    </form>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+</body>
+</html>

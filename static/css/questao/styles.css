@@ -1,0 +1,162 @@
+html { 
+    font-family: Arial, Helvetica, sans-serif; padding: 1rem;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: #f9fbfc;
+    padding: 2rem 0;
+}
+
+main {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-questao {
+    width: 100%;
+    max-width: 600px;
+    
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border: 1px solid #0000003a;
+}
+
+header {margin: 0; text-align: center;}
+
+h1 {font-family: serif; color: #790043; margin: 0; padding-bottom: 10px;}
+.titulo-geral {color: #003f79; margin: 0; padding-bottom: 10px;}
+.subtitulo {text-align: left; font-weight: 700; font-size: 19px; color: #0011ac; margin: 0; margin-top: 10px;}
+.subtitulo-geral {text-align: left; font-weight: 700; font-size: 19px; color: #008a94; margin: 0; margin-top: 10px;}
+
+a {color: #0400ff; text-decoration: none; padding: 5px;}
+a:hover {color: #5600a7; cursor: pointer;}
+
+p {font-size: 18px; padding: 5px; margin: 0;}
+input:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #00ffff;
+}
+
+.card-home {
+    width: 100%;
+    padding: 0 0 20px 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #0000003a;
+}
+.card-home:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+    transform: translateY(-2px);
+}
+.card-voltar {width: 100%;}
+.card, .card-exclusao {border: 1px solid #0000003a; border-radius: 10px; width: 100%; padding: 20px 20px 10px 20px; }
+
+.form-questao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form-titulo {text-align: center; font-weight: 600; padding-bottom: 20px; margin: 0; font-size: 18px;}
+.form-grupo, .form-radio {display: flex; align-items: center; gap: 10px;}
+.form-grupo label {font-weight: 600; color: #555555; width: 100px; font-size: 17px;}
+.form-radio label {font-weight: 600; color: #555555; font-size: 17px;}
+.form-grupo input, .form-grupo textarea {flex: 1; padding: 5px; border-radius: 5px; font-family: inherit; font-size: 16px;}
+.form-salvar {display: flex; justify-content: right; gap: 10px;}
+.label-radio {width: 150px;}
+.opcoes-radio {display: flex;gap: 15px;}
+.btn-salvar {
+    padding: 5px;
+    border: 1px solid #000;
+    width: 100px;
+    border-radius: 6px;
+    background: #007BFF;
+    cursor: pointer;
+    color: white;
+}
+
+.erros {font-size: 17px; color: #e20000; display: flex; flex-direction: column; gap: 3px;}
+.sucesso {letter-spacing: -0.3px; font-size: 17px; color: #00a716; gap: 3px;}
+
+.table-questao {margin-bottom: 10px;}
+.table-questao, .table-questao-inicio {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #0000003a;
+    table-layout: fixed;
+}
+.table-questao td {color: #4d4d4d; font-weight: 600; font-size: 16px;}
+.questao-titulo {color: black;}
+.table-questao th, .table-questao-inicio th,
+.table-questao td, .table-questao-inicio td {
+    border: 1px solid #0000003a;
+    padding: 10px;
+    text-align: left;
+    font-size: 17px;
+
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.table-questao-inicio th {background: #004ba1; color: white;}
+
+.table-questao tr:nth-child(even) {background-color: #f2f2f2;}
+.table-questao th:nth-child(1), .table-questao-inicio th:nth-child(1),
+.table-questao td:nth-child(1) {width: 40%;}
+.table-questao td:nth-child(3), .table-questao-inicio th:nth-child(3),
+.table-questao th:nth-child(3) {width: 80px; white-space: nowrap; text-align: center; padding: 10px;}
+
+.btn-editar, .btn-excluir {
+    font-weight: bold;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-editar {background-color: #2e54ff;}
+.btn-editar:hover {background-color: #1b5fbf;}
+
+.btn-excluir {background-color: #e81123;}
+.btn-excluir:hover {background-color: #a50f1b;}
+
+.card-exclusao p {color: #130047;}
+.card-exclusao li {color: #003079;}
+
+.aviso-exclusao {color: #e81123; font-weight: 600; font-size: 17px; margin-bottom: 10px; padding-top: 20px;}
+li {list-style: none;}
+.card-confirmacao label {text-align: center;}
+.confirmacao-texto {margin-bottom: 10px;}
+.confirmacao-texto label {font-size: 17px; font-weight: bold;}
+
+.botoes-exclusao {display: flex; justify-content: center; gap: 10px;}
+.btn-exclusao, .btn-cancelar {
+    font-weight: bold;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.btn-exclusao {background-color: #e81123; color: white;}
+.btn-cancelar {background-color: #ccc; color: black;}
+.btn-exclusao:hover,
+.btn-cancelar:hover {opacity: 0.85;}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Questão</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questao/styles.css') }}">
+</head>
+<body>
+    <div class="container-questao">
+        <header>
+            <h1 class="titulo-geral">Editar Questão</h1>
+            <p class="subtitulo-geral">Faça as alterações desejadas e salve para atualizar a questão</p>
+        </header>
+        <main>
+            <section class="card">
+                <p class="form-titulo">Atualizar questão</p>
+
+                <form class="form-questao" action="/editar/{{ context.questao.id }}" method="POST">
+                    
+                    <div class="form-grupo">
+                        <label for="pergunta">PERGUNTA</label>
+                        <textarea type="text" id="pergunta" name="pergunta" rows="4">{{ context.questao.data['pergunta'] }}</textarea>
+                    </div>
+                    <div class="form-grupo">
+                        <label for="alternativaA">Resposta A</label>
+                        <textarea type="text" id="alternativaA" name="alternativaA" rows="2">{{ context.questao.data['respostas'][0] }}</textarea>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="alternativaB">Resposta B</label>
+                        <textarea type="text" id="alternativaB" name="alternativaB" rows="2">{{ context.questao.data['respostas'][1] }}</textarea>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="alternativaC">Resposta C</label>
+                        <textarea type="text" id="alternativaC" name="alternativaC" rows="2">{{ context.questao.data['respostas'][2] }}</textarea>
+                    </div>
+
+                    <div class="form-radio">
+                        <label for="respostaCorreta">Resposta Correta</label>
+                        <div class="opcoes-radio">
+                            <label for="respostaCorretaA">A
+                                <input type="radio" id="respostaCorretaA" name="respostaCorreta" value="A" {% if context.questao.data['respostaCorreta'] == "A" %}checked{% endif %}>
+                            </label>
+                            <label for="respostaCorretaB">B
+                                <input type="radio" id="respostaCorretaB" name="respostaCorreta" value="B" {% if context.questao.data['respostaCorreta'] == "B" %}checked{% endif %}>
+                            </label>
+                            <label for="respostaCorretaC">C
+                                <input type="radio" id="respostaCorretaC" name="respostaCorreta" value="C" {% if context.questao.data['respostaCorreta'] == "C" %}checked{% endif %}>
+                            </label>
+                        </div>
+                        
+                    </div>
+                    <div class="form-salvar">
+                        <input class="btn-salvar" type="submit" value="Salvar">
+                    </div>
+                    
+                </form>
+
+                {% if context and context.erros %}
+                    <div class="erros">
+                        {% for erro in context.erros %}
+                            <div>{{ erro }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            </section>
+            <section class="card-voltar">
+                <p>Voltar para a <a href="/listar">lista de questões</a></p>
+                <p>Voltar para a <a href="/questao">home</a></p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

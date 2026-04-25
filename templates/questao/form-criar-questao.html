@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Questão</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questao/styles.css') }}">
+</head>
+<body>
+    <div class="container-questao">
+        <header>
+            <h1 class="titulo-geral">Cadastrar Questão</h1>
+            <p class="subtitulo-geral">Preencha os campos abaixo para criar uma nova questão</p>
+        </header>
+
+        <main>
+            <section class="card">
+                <p class="form-titulo">Personalizar questão</p>
+
+                <form class="form-questao" action="/criar/salvar" method="POST">
+
+                    <div class="form-grupo">
+                        <label for="pergunta">PERGUNTA</label>
+                        <textarea type="text" id="pergunta" name="pergunta" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="alternativaA">Resposta A</label>
+                        <textarea type="text" id="alternativaA" name="alternativaA" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="alternativaB">Resposta B</label>
+                        <textarea type="text" id="alternativaB" name="alternativaB" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-grupo">
+                        <label for="alternativaC">Resposta C</label>
+                        <textarea type="text" id="alternativaC" name="alternativaC" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-radio">
+                        <label class="label-radio">Resposta Correta</label>
+
+                        <div class="opcoes-radio">
+                            <label>
+                                <input type="radio" name="respostaCorreta" value="A"> A
+                            </label>
+
+                            <label>
+                                <input type="radio" name="respostaCorreta" value="B"> B
+                            </label>
+
+                            <label>
+                                <input type="radio" name="respostaCorreta" value="C"> C
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-salvar">
+                        <input class="btn-salvar" type="submit" value="Salvar">
+                    </div>
+
+                </form>
+                {% if context and context.erros %}
+                    <div class="erros">
+                        {% for erro in context.erros %}
+                            <div>{{ erro }}</div>
+                        {% endfor %}
+                        
+                    </div>
+                    {% else %}
+                        {% if context and context.sucesso %}
+                            <div class="sucesso">
+                                {{ context.sucesso }}
+                            </div>
+                        {% endif %}
+                {% endif %}
+
+            </section>
+
+            <section class="card-voltar">
+                <p>Para visualizar suas questões salvas, <a href="/listar">clique aqui</a></p>
+                
+                <p>Voltar para a <a href="/questao">home</a></p>
+            </section>
+
+        </main>
+    </div>
+
+</body>
+</html>

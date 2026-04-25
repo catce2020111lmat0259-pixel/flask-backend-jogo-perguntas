@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Questões</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questao/styles.css') }}">
+</head>
+<body>
+    <div class="container-questao">
+        {% if not context.questoes %}
+            <header>
+                <h1 class="titulo-geral">Banco de Questões</h1>
+                <p class="subtitulo">Você ainda nao possui questões cadastradas</p>
+            </header>
+            <main>
+                <section class="card-voltar">
+                    <p>Nenhuma questão cadastrada ainda. <a href="/criar">Crie sua primeira questão</a></p>
+                </section>
+            </main>
+        {% else %}
+            <header>
+                <h1 class="titulo-geral">Banco de Questões</h1>
+                <p class="subtitulo-geral">Veja, edite e organize suas questões salvas</p>
+            </header>
+            <main>
+                <section class="card-questao">
+                    <table class="table-questao-inicio">
+                        <thead>
+                            <tr>
+                                <th>Pergunta</th>
+                                <th>Alternativas</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                        {% for questao in context.questoes %}
+                            <table class="table-questao">
+                                <thead></thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="4"><p class="questao-titulo">Questão {{ loop.index }} </p>
+                                            {{ questao.data['pergunta'] }}
+                                        </td>
+                                        <td>A. {{ questao.data['respostas'][0] }}</td>
+                                        <td rowspan="2">
+                                            <form action="/editar/{{ questao.id }}" method="GET">
+                                                <input class="btn-editar" type="submit" value="EDITAR">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>B. {{ questao.data['respostas'][1] }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>C. {{ questao.data['respostas'][2] }}</td>
+                                        <td rowspan="2">
+                                            <form action="/excluir/{{ questao.id }}" method="GET">
+                                                <input class="btn-excluir" type="submit" value="EXCLUIR">
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Resposta Correta: {{ questao.data['respostaCorreta'] }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {% endfor %}
+                        
+                </section>
+
+                <section class="card-voltar">
+                    <p>Para criar uma nova questão, <a href="/criar">clique aqui</a></p>
+                    <p>Voltar para a <a href="/questao">home</a></p>
+                </section>
+
+            {% endif %}
+            </main>
+    </div>
+</body>
+</html>

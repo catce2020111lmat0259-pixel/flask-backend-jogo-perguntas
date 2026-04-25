@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fim da Partida</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo/styles.css') }}">
+</head>
+<body>
+    <div class="container-fim">
+        <header>
+            <h1 class="titulo-fim">Fim da Partida!</h1>
+        </header>
+        <main>
+            <section class="card">
+                <h3>&#x1F3C6; Parabéns, você respondeu todas as questões.</h3>
+                <p>Perguntas respondidas: {{ context.perguntas_respondidas }}</p>
+                <p>Você acertou: {{ context.acertos }}</p>
+                <p>Você errou: {{ context.erros }}</p>
+
+                <form action="/jogo">
+                    <input class="btn-jogar-novamente" type="submit" value="Jogar novamente">
+                </form>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>

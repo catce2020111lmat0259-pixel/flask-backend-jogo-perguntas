@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partida do Jogo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jogo/styles.css') }}">
+</head>
+<body>
+    <div class="container-jogo">
+        <header>
+        </header>
+        <main>
+            {% if context.questao %}
+                <section class="card-pergunta">
+                    <div>
+                        <div class="pergunta">{{ context.questao.data['pergunta'] }}</div>
+                        <form action="/jogo/resultado" method="POST">
+                            <div class="respostas">
+                                <input type="radio" id="respostaA" name="resposta_jogador" value="A">
+                                <label for="respostaA">{{ context.questao.data['respostas'][0] }}</label>
+                            </div>
+                            <div class="respostas">
+                                <input type="radio" id="respostaB" name="resposta_jogador" value="B">
+                                <label for="respostaB">{{ context.questao.data['respostas'][1] }}</label>
+                            </div>
+                            <div class="respostas">
+                                <input type="radio" id="respostaC" name="resposta_jogador" value="C">
+                                <label for="respostaC">{{ context.questao.data['respostas'][2] }}</label>
+                            </div>
+
+                            <input type="hidden" name="partida_id" value="{{ context.partida_id }}">
+                            <input type="hidden" name="questao_id" value="{{ context.questao.id }}">
+                            <input type="hidden" name="resposta_correta" value="{{ context.questao.data['respostaCorreta'] }}">
+
+                            <input class="btn-responder" type="submit" value="Responder">
+                        </form>
+                    </div>
+                    {% if context.errors %}
+                        {% for error in context.errors %}
+                            <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </section>
+                {% else %}
+                <section class="card-pergunta">
+                    <div>
+                        <p><strong>Não há perguntas disponíveis</strong></p>
+                        <p>Voltar para a tela de jogo, clique <a href="/jogo">sair</a></p>
+                    </div>
+                </section>
+                {% endif %}
+                
+            <section class="card-jogador">
+                <div class="painel-titulo">Painel do Jogador</div>
+                <div class="painel-dados">
+                    <p>Perguntas = {{ context.perguntas_respondidas }}</p>
+                    <p>Acertos = {{ context.acertos }}</p>
+                    <p>Erros = {{ context.erros }}</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+</html>

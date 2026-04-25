@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Jogo de Perguntas</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/questao/styles.css') }}">
+</head>
+<body>
+    <div class="container-questao">
+        <header>
+            <h1>Painel de Questões</h1>
+            <p class="subtitulo">Gerencie suas perguntas que serão utilizadas no jogo</p>
+        </header>
+
+        <main>
+            <section class="card-home">
+                <h2>Criar nova Questão</h2>
+                <p>Adicione perguntas personalizadas para a criação do seu jogo.</p>
+                <a href="/criar">Cadastrar nova questão</a>
+            </section>
+
+            <section class="card-home">
+                <h2>Exibir todas as Questões</h2>
+                <p>Visualize, revise ou edite as questões cadastradas.</p>
+                <a href="/listar">Ver questões</a>
+            </section>
+        </main>
+    </div>
+    
+</body>
+</html>

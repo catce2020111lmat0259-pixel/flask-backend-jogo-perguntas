@@ -1,0 +1,34 @@
+# sem ambiente virtual
+pip install Flask
+
+flask --app main run --debug
+
+# com ambiente virtual
+
+// WINDONS //
+
+py -3 -m venv .venv
+
+.venv\Scripts\activate
+
+pip install Flask
+
+
+# RODAR
+
+flask --app main run --debug
+
+------------------------- // ---------------------
+
+// LINUX //
+
+python3 -m venv .venv
+
+source .venv/bin/activate
+
+pip install Flask
+
+# RODAR
+
+flask --app main run --debug
+

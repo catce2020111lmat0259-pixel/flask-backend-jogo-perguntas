@@ -11,4 +11,5 @@ def adicionar_routes(app: Flask):
     :param app: O objeto Flask ao qual as rotas serão adicionadas.
     :type app: Flask
     """
+    app.add_url_rule(rule="/", endpoint="home", view_func=home_jogo_controller.home_jogo, methods=["GET"])
     app.add_url_rule(rule="/jogo", endpoint="home_jogo", view_func=home_jogo_controller.home_jogo, methods=["GET"])
